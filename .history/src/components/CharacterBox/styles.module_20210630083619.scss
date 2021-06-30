@@ -1,0 +1,38 @@
+.container {
+  margin: 2rem;
+  width: 240px;
+  border-radius: 8px;
+  background: #FFFFFF;
+
+}
+.image{
+  width: 240px;
+  height: 168px;
+  border-radius: 8px 8px 0px 0px;
+}
+.content{
+  align-items: center;
+  padding: .5rem 1rem;
+  display: flex;
+  flex-direction: row;
+}
+.text{
+  display: flex;
+  flex-direction: column;
+  
+
+  strong{
+    font-size: 20px;
+    line-height: 30px;
+    font-weight: 500;
+    color: #000000;
+  }
+
+  span{
+    font-size: 14px;
+    line-height: 21px;
+    font-weight: normal;
+    color: rgba(0, 0, 0, 0.6);
+
+  }
+}

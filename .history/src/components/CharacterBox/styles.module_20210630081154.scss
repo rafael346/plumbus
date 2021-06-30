@@ -1,0 +1,19 @@
+.container {
+  margin: 2rem;
+  width: 240px;
+  border-radius: 8px;
+  background: #FFFFFF;
+
+}
+.image{
+  width: 240px;
+  height: 168px;
+  border-radius: 8px 8px 0px 0px;
+}
+
+.content{
+  display: flex;
+  flex-direction: column;
+  padding: 0 1rem;
+
+}
