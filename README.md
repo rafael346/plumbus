@@ -1,3 +1,4 @@
+
 <h2>Plumbus</h2>
 
 Aplicação que realiza consulta, visualização e cadastro de seus personagens favoritos do seriado Rick and Morty.
@@ -23,7 +24,7 @@ Esses comandos irão instalar todas as dependências necessárias para executar 
 Após instalar as dependências execute os seguintes comandos em terminais diferentes:
 
 ```
-yarn dev
+yarn dev ou npm dev
 ```
 Após executar esses  comandos basta aguardar a inicialização do app e ele estará pronto para uso:
 
@@ -34,18 +35,30 @@ Após executar esses  comandos basta aguardar a inicialização do app e ele est
 
 ## ▶️ Demonstração da Aplicação
 
+#### Realizando a busca inicial
+![buscainicial](https://user-images.githubusercontent.com/22009598/124270384-8314ba00-db12-11eb-92c4-58af489b725e.gif)
+
+#### Em caso de erro na Busca
+![errobuscar](https://user-images.githubusercontent.com/22009598/124270557-be16ed80-db12-11eb-93ee-3d0cd25aeda5.gif)
+
+#### Adicionando um Personagem na lista de favoritos
+![favoritando](https://user-images.githubusercontent.com/22009598/124270653-e0a90680-db12-11eb-8551-626b0eefc8bc.gif)
+
+#### Removendo um Personagem na lista de favoritos
+![removendo](https://user-images.githubusercontent.com/22009598/124270866-21088480-db13-11eb-91f3-3d06f82327b0.gif)
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
+## 🔧 Tecnologias Utilizadas no Projeto
+  • Typescript<p>
+  • ReactJS<p>
+  • NextJS<p>
+  • Axios<p>
+  • React-Modal<p>
+  • React-Spinners<p>
+  • React-Toastify<p>
+  • Sass<p>
+  • Uuid<p>
+  
+  
