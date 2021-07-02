@@ -1,23 +1,18 @@
+import { FormEvent, useContext } from 'react';
+import PacmanLoader from 'react-spinners/PacmanLoader';
+import { AiOutlineSearch } from 'react-icons/ai';
 import Head from 'next/head';
 import Image from 'next/image';
-import PacmanLoader from 'react-spinners/PacmanLoader';
-
-import React, { useEffect, useState, FormEvent, useContext } from 'react';
-import { SearchList } from '../components/SearchList';
-import { AiOutlineSearch } from 'react-icons/ai';
-
-import { api } from '../services/api';
-
-import styles from '../styles/home.module.scss';
 import { FavoriteList } from '../components/FavoritesList';
 import { SearchContext } from '../context/SearchContext';
+import { SearchList } from '../components/SearchList';
 
-
-
+import styles from '../styles/home.module.scss';
 
 export default function Home() {
   const { name, setName, loadCharacters, loading } = useContext(SearchContext);
-  async function handleSubmit(event: FormEvent) {
+
+  function handleSubmit(event: FormEvent) {
     event.preventDefault();
     setName(name);
     loadCharacters();
@@ -29,7 +24,7 @@ export default function Home() {
         <Head>
           <title>Home</title>
         </Head>
-        <Image src="/images/logo.svg" alt="Logo" width={500} height={140} />
+        <Image src="/images/logo.svg" alt="Logo" width={400} height={140} />
         <label>Digite o nome do Personagem</label>
         <div className={styles.inputContainer}>
           <form>
@@ -44,7 +39,6 @@ export default function Home() {
           ? (<SearchList />)
           : (<PacmanLoader color="#1ABED6" />)
         }
-
       </div>
       <FavoriteList />
     </div>

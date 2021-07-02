@@ -1,9 +1,7 @@
-
 import { useState } from 'react';
 import { DetailsModal } from '../DetailsModal';
 import { ImEye } from 'react-icons/im'
 import styles from './styles.module.scss';
-
 
 type CharacterProps = {
   id: string;

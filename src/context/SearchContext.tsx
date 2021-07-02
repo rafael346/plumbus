@@ -1,5 +1,4 @@
-import { useState, ReactNode } from "react";
-import { createContext } from "react";
+import { useState, ReactNode, createContext } from "react";
 import { v4 as uuidv4 } from 'uuid';
 import { toast } from 'react-toastify';
 
@@ -55,7 +54,6 @@ export function SearchProvider({ children }: SearchContextProps) {
   function handleRemoveFavoriteCharacter(id: string) {
     const favoriteListRemover = favoriteList.filter(character => character.id != id);
     setFavoriteList(favoriteListRemover)
-
   }
 
   async function loadCharacters() {
@@ -66,7 +64,9 @@ export function SearchProvider({ children }: SearchContextProps) {
       setCharacters(response.data.results);
 
     } catch (err) {
+      setLoading(false);
       toast.error('Esse personagem não existe!');
+      setLoading(true);
     }
   }
 

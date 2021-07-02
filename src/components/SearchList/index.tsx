@@ -1,14 +1,11 @@
-import React, { useEffect, useState, useContext } from 'react';
+import { useContext } from 'react';
 import { SearchContext } from '../../context/SearchContext';
-import { api } from '../../services/api';
 import { CharacterBox } from '../CharacterBox';
-import { DetailsModal } from '../DetailsModal';
 
 import styles from './styles.module.scss'
 
 export function SearchList() {
   const { characters } = useContext(SearchContext);
-
 
   return (
     <div className={styles.container}>
@@ -26,6 +23,5 @@ export function SearchList() {
         </div>
       ))}
     </div>
-
   )
 }
