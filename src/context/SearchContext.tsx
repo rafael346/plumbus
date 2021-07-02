@@ -1,6 +1,7 @@
-import { useEffect, useState, ReactNode } from "react";
+import { useState, ReactNode } from "react";
 import { createContext } from "react";
 import { v4 as uuidv4 } from 'uuid';
+import { toast } from 'react-toastify';
 
 import { api } from "../services/api";
 
@@ -12,12 +13,13 @@ type Character = {
   species: string;
   type: string;
   gender: string;
-
 }
 
-
-
 type SearchContextData = {
+  name: string;
+  loading: boolean;
+  setName: (name: string) => void;
+  loadCharacters: () => Promise<void>;
   characters: Character[];
   handleCreateFavoriteCharacter: (Character: Character) => void;
   handleRemoveFavoriteCharacter: (id: string) => void;
@@ -34,6 +36,8 @@ export const SearchContext = createContext<SearchContextData>({} as SearchContex
 export function SearchProvider({ children }: SearchContextProps) {
   const [characters, setCharacters] = useState<Character[]>([]);
   const [favoriteList, setFavoriteList] = useState([]);
+  const [name, setName] = useState('');
+  const [loading, setLoading] = useState(true);
 
   function handleCreateFavoriteCharacter(Character: Character) {
     const newFavoriteList = {
@@ -54,30 +58,30 @@ export function SearchProvider({ children }: SearchContextProps) {
 
   }
 
-
-  useEffect(() => {
-    api.get('character/?name=morty').then(response => {
+  async function loadCharacters() {
+    try {
+      setLoading(false);
+      const response = await api.get(`character/?name=${name}`);
+      setLoading(true);
       setCharacters(response.data.results);
-    })
-  }, [])
+
+    } catch (err) {
+      toast.error('Esse personagem não existe!');
+    }
+  }
 
   return (
     <SearchContext.Provider value={{
       characters,
       favoriteList,
+      loading,
+      name,
+      setName,
+      loadCharacters,
       handleCreateFavoriteCharacter,
       handleRemoveFavoriteCharacter
     }}>
       {children}
-
     </SearchContext.Provider>
   )
-
 }
-
-
-
-
-
-
-

@@ -1,8 +1,9 @@
-import React, { useContext } from 'react';
+
 import { useState } from 'react';
 import { DetailsModal } from '../DetailsModal';
+import { ImEye } from 'react-icons/im'
 import styles from './styles.module.scss';
-import { SearchContext } from '../../context/SearchContext';
+
 
 type CharacterProps = {
   id: string;
@@ -14,7 +15,15 @@ type CharacterProps = {
   status: string;
 }
 
-export function CharacterBox({ id, name, image, species, gender, type, status }: CharacterProps) {
+export function CharacterBox(
+  { id,
+    name,
+    image,
+    species,
+    gender,
+    type,
+    status }: CharacterProps) {
+
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   function handleOpenModal() {
@@ -25,13 +34,15 @@ export function CharacterBox({ id, name, image, species, gender, type, status }:
     setIsModalOpen(false);
   }
 
-
   return (
     <div className={styles.container}>
       <img className={styles.image} src={image} alt={name} />
       <div className={styles.content}>
         <strong>{name}</strong>
         <span>{species}</span>
+        <button type="button" className={styles.viewButton} onClick={handleOpenModal}>
+          <ImEye />
+        </button>
       </div>
       <DetailsModal
         handleCloseModal={handleCloseModal}
@@ -44,9 +55,6 @@ export function CharacterBox({ id, name, image, species, gender, type, status }:
         type={type}
         status={status}
       />
-      <button type="button" onClick={handleOpenModal}>teste</button>
-
-
     </div>
   )
 }

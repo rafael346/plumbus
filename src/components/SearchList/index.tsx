@@ -6,12 +6,9 @@ import { DetailsModal } from '../DetailsModal';
 
 import styles from './styles.module.scss'
 
-
-
-
-
 export function SearchList() {
   const { characters } = useContext(SearchContext);
+
 
   return (
     <div className={styles.container}>

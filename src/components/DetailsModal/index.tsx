@@ -1,13 +1,9 @@
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import Modal from 'react-modal'
 import { IoMdCloseCircleOutline } from 'react-icons/io'
-
-import styles from './styles.module.scss'
 import { SearchContext } from '../../context/SearchContext';
 
-
-
-
+import styles from './styles.module.scss'
 
 type DetailsModalProps = {
   id: string;
@@ -21,8 +17,17 @@ type DetailsModalProps = {
   handleCloseModal: () => void;
 }
 
+export function DetailsModal({
+  id,
+  image,
+  name,
+  gender,
+  status,
+  species,
+  type,
+  isOpen,
+  handleCloseModal }: DetailsModalProps) {
 
-export function DetailsModal({ id, image, name, gender, status, species, type, isOpen, handleCloseModal }: DetailsModalProps) {
   const { handleCreateFavoriteCharacter } = useContext(SearchContext);
 
   function handleFavorite() {
@@ -68,5 +73,3 @@ export function DetailsModal({ id, image, name, gender, status, species, type, i
     </Modal>
   )
 }
-
-//onClick={() => handleCreateFavoriteCharacter() }
