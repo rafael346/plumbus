@@ -1,50 +1,72 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import Modal from 'react-modal'
 import { IoMdCloseCircleOutline } from 'react-icons/io'
 
-
 import styles from './styles.module.scss'
+import { SearchContext } from '../../context/SearchContext';
+
+
+
+
 
 type DetailsModalProps = {
+  id: string;
+  image: string;
+  name: string;
+  gender: string;
+  status: string;
+  species: string;
+  type: string;
   isOpen: boolean;
-  onRequestClose: () => void;
+  handleCloseModal: () => void;
 }
 
 
-export function DetailsModal({ isOpen, onRequestClose }: DetailsModalProps) {
+export function DetailsModal({ id, image, name, gender, status, species, type, isOpen, handleCloseModal }: DetailsModalProps) {
+  const { handleCreateFavoriteCharacter } = useContext(SearchContext);
 
+  function handleFavorite() {
+    handleCreateFavoriteCharacter({
+      id, image, name, gender, status, species, type
+    })
+  }
 
   return (
     <Modal
       isOpen={isOpen}
-      onRequestClose={onRequestClose}
+      onRequestClose={handleCloseModal}
       overlayClassName="react-modal-overlay"
       className="react-modal-content"
+      ariaHideApp={false}
     >
       <button
         type="button"
-        onClick={onRequestClose}
+        onClick={handleCloseModal}
         className="react-modal-close"
       >
-        <IoMdCloseCircleOutline size={25} color="#E52E4D" />
+        <IoMdCloseCircleOutline size={40} color="#E52E4D" />
       </button>
-
       <div className={styles.container}>
-        <img src="https://rickandmortyapi.com/api/character/avatar/1.jpeg" alt="rick" />
-        <h1>Rick Sanchez</h1>
-        <label>Informações</label>
-        <strong>Gênero</strong>
-        <span>Male</span>
+        <img src={image} alt={name} />
+        <h1>{name}</h1>
+        <label>Informations</label>
+        <strong>Gender</strong>
+        <span>{gender}</span>
+
         <strong>Status</strong>
-        <span>Alive</span>
+        <span>{status}</span>
+
         <strong>Specie</strong>
-        <span>Human</span>
-        <strong>Type</strong>
-        <span>Unknown</span>
-        <strong>Location</strong>
-        <span>Earth(Replacement Dimension)</span>
-        <button>Favoritar</button>
+        <span>{species}</span>
+        {type ? (
+          <>
+            <strong>Type</strong>
+            <span>{type}</span>
+          </>) : ''}
+        <button type="button" onClick={handleFavorite}>Favoritar</button>
       </div>
     </Modal>
   )
 }
+
+//onClick={() => handleCreateFavoriteCharacter() }

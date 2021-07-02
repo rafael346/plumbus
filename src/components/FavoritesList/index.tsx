@@ -1,21 +1,15 @@
-import React, { useEffect, useState, useContext } from 'react';
+
+import React, { useContext } from 'react';
 import { SearchContext } from '../../context/SearchContext';
-import { api } from '../../services/api';
 import { CharacterBox } from '../CharacterBox';
-import { DetailsModal } from '../DetailsModal';
+import styles from './styles.module.scss';
 
-import styles from './styles.module.scss'
-
-
-
-
-
-export function SearchList() {
-  const { characters } = useContext(SearchContext);
-
+export function FavoriteList() {
+  const { favoriteList, handleRemoveFavoriteCharacter } = useContext(SearchContext);
   return (
     <div className={styles.container}>
-      {characters.map(character => (
+      <h1>Personagens Favoritos</h1>
+      {favoriteList.map(character => (
         <div key={character.id}>
           <CharacterBox
             id={character.id}
@@ -26,9 +20,9 @@ export function SearchList() {
             type={character.type}
             status={character.status}
           />
+          <button type="button" onClick={() => handleRemoveFavoriteCharacter(character.id)}>Delete</button>
         </div>
       ))}
     </div>
-
   )
 }
