@@ -70,7 +70,10 @@ export function DetailsModal({
             <strong>Type</strong>
             <span>{type}</span>
           </>) : ''}
-        {favorited ? '' : <button type="button" onClick={handleFavorite}>Favoritar</button>}
+        {favorited ? '' : <button type="button" onClick={() => {
+          handleFavorite();
+          handleCloseModal();
+        }}>Favoritar</button>}
       </div>
     </Modal>
   )
