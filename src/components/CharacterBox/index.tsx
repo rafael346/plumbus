@@ -11,6 +11,7 @@ type CharacterProps = {
   gender: string;
   type: string;
   status: string;
+  favorited: boolean;
 }
 
 export function CharacterBox(
@@ -20,6 +21,7 @@ export function CharacterBox(
     species,
     gender,
     type,
+    favorited = false,
     status }: CharacterProps) {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -52,6 +54,7 @@ export function CharacterBox(
         gender={gender}
         type={type}
         status={status}
+        favorited={favorited}
       />
     </div>
   )

@@ -12,6 +12,7 @@ export function SearchList() {
       {characters.map(character => (
         <div key={character.id}>
           <CharacterBox
+            favorited={false}
             id={character.id}
             name={character.name}
             image={character.image}

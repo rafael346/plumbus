@@ -12,6 +12,7 @@ export function FavoriteList() {
       {favoriteList.map(character => (
         <div key={character.id} className={styles.boxContent}>
           <CharacterBox
+            favorited={true}
             id={character.id}
             name={character.name}
             image={character.image}

@@ -14,6 +14,7 @@ type DetailsModalProps = {
   species: string;
   type: string;
   isOpen: boolean;
+  favorited: boolean;
   handleCloseModal: () => void;
 }
 
@@ -26,6 +27,7 @@ export function DetailsModal({
   species,
   type,
   isOpen,
+  favorited = false,
   handleCloseModal }: DetailsModalProps) {
 
   const { handleCreateFavoriteCharacter } = useContext(SearchContext);
@@ -68,7 +70,7 @@ export function DetailsModal({
             <strong>Type</strong>
             <span>{type}</span>
           </>) : ''}
-        <button type="button" onClick={handleFavorite}>Favoritar</button>
+        {favorited ? '' : <button type="button" onClick={handleFavorite}>Favoritar</button>}
       </div>
     </Modal>
   )
